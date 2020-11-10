@@ -1,6 +1,9 @@
 package main
 
 import (
+	"errors"
+	"fmt"
+	"io/ioutil"
 	"zabbix.com/pkg/plugin"
 )
 
@@ -10,7 +13,7 @@ type Plugin struct {
 
 var impl Plugin
 
-func (p *Plugin) Export(key string, params []string, ctx Plugin.ContextProvider) (res interfase{}, err error) {
+func (p *Plugin) Export(key string, params []string, ctx Plugin.ContextProvider) (res interface{}, err error) {
 	if len(params) != 1 {
 		return nil, errors.New("Wrong parameters")
 	}
@@ -26,7 +29,7 @@ func (p *Plugin) Export(key string, params []string, ctx Plugin.ContextProvider)
 		return nil, err
 	}
 
-	return string(temp)[0:len(temp)-4], nil
+	return string(temp)[0 : len(temp)-4], nil
 }
 
 func init() {
