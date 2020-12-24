@@ -14,7 +14,7 @@ type Plugin struct {
 
 var impl Plugin
 
-func (p *Plugin) Export(key string, params []string, ctx Plugin.ContextProvider) (res interface{}, err error) {
+func (p *Plugin) Export(key string, params []string, ctx plugin.ContextProvider) (res interface{}, err error) {
 	if len(params) != 1 {
 		return nil, errors.New("Wrong parameters")
 	}
@@ -34,5 +34,5 @@ func (p *Plugin) Export(key string, params []string, ctx Plugin.ContextProvider)
 }
 
 func init() {
-	Plugin.RegisterMetrics(&impl, "Weather", "weather.temp", "Returns Celsius temperature.")
+	plugin.RegisterMetrics(&impl, "Weather", "weather.temp", "Returns Celsius temperature.")
 }
