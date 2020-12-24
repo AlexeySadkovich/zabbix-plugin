@@ -1,9 +1,10 @@
-package main
+package plugins
 
 import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+
 	"zabbix.com/pkg/plugin"
 )
 
